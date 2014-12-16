@@ -1,0 +1,57 @@
+{
+  "name": "deep-extend-stream",
+  "version": "0.0.0",
+  "description": "Transform stream to extend an object recursively",
+  "repository": "shinnn/deep-extend-stream",
+  "author": {
+    "name": "Shinnosuke Watanabe",
+    "url": "https://github.com/shinnn"
+  },
+  "scripts": {
+    "pretest": "jscs *.js && eslint *.js",
+    "test": "node test.js | tap-spec",
+    "coverage": "istanbul cover test.js",
+    "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/shinnn/deep-extend-stream/blob/master/LICENSE"
+    }
+  ],
+  "files": [
+    "index.js",
+    "LICENSE"
+  ],
+  "keywords": [
+    "extend",
+    "deep",
+    "deep-extend",
+    "data",
+    "object",
+    "property",
+    "properties",
+    "stream",
+    "transform",
+    "readable",
+    "writable"
+  ],
+  "dependencies": {
+    "deep-extend": "^0.3.2",
+    "through2": "^0.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^0.10.1",
+    "istanbul": "^0.3.5",
+    "istanbul-coveralls": "^1.0.1",
+    "jscs": "^1.8.1",
+    "stream-array": "^1.0.1",
+    "tap-spec": "^2.1.1",
+    "tape": "^3.0.3"
+  },
+  "jscsConfig": {
+    "preset": "google",
+    "maximumLineLength": 98,
+    "validateLineBreaks": "LF"
+  }
+}

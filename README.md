@@ -1,0 +1,95 @@
+# deep-extend-stream
+
+[![Build Status](http://img.shields.io/travis/shinnn/deep-extend-stream.svg?style=flat)](https://travis-ci.org/shinnn/deep-extend-stream)
+[![Build status](https://ci.appveyor.com/api/projects/status/1im5lixtp38ecg97?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/deep-extend-stream)
+[![Coverage Status](https://img.shields.io/coveralls/shinnn/deep-extend-stream.svg?style=flat)](https://coveralls.io/r/shinnn/deep-extend-stream)
+[![Dependency Status](https://david-dm.org/shinnn/deep-extend-stream.svg?style=flat)](https://david-dm.org/shinnn/deep-extend-stream)
+[![devDependency Status](https://david-dm.org/shinnn/deep-extend-stream/dev-status.svg?style=flat)](https://david-dm.org/shinnn/deep-extend-stream#info=devDependencies)
+
+Recursively extend the object in a stream
+
+```javascript
+var deepExtend = require('deep-extend-stream');
+
+var target = {foo: {bar: 123}};
+var deepExtendStream = deepExtend(target);
+
+deepExtendStream.write({foo: {baz: 'Hello'}});
+deepExtendStream.write({qux: 'World'});
+
+deepExtendStream.on('finish', function() {
+  target; //=> {foo: {bar: 123, baz: 'Hello'}, qux: 'World'}
+});
+
+deepExtendStream.end();
+```
+
+## Installation
+
+[![NPM version](http://img.shields.io/npm/v/deep-extend-stream.svg?style=flat)](https://www.npmjs.com/package/deep-extend-stream)
+
+[Use npm.](https://docs.npmjs.com/cli/install)
+
+```
+npm install deep-extend-stream
+```
+
+## API
+
+```javascript
+var deepExtend = require('deep-extend-stream');
+```
+
+### deepExtend([*target*,] [*callback*])
+
+*target*: `Object` or `Array`  
+*callback*: `Function`  
+Return: `Object` ([stream.Transform](http://nodejs.org/api/stream.html#stream_class_stream_writable_1))
+
+It returns a transform stream that recursively extends the target object with passed objects (what is called "deep extend").
+
+Target object is optional (`{}` by default).
+
+```javascript
+var deepExtend = require('deep-extend-stream');
+var deepExtendStream = deepExtend();
+
+deepExtendStream
+.on('finish', function() {
+  // this._target is an internal property to keep target object
+  this._target;
+  /*=> {
+    '0': 'a',
+    '1': {
+      b: 'c',
+      d: 'e'
+    },
+    '2': 'f'
+  } */
+})
+.write(['a', {'b': 'c'}, 'f'])
+.write({'1': {'d': 'e'}})
+.end();
+```
+
+#### callback(target)
+
+You can specify a function to be called on `finish` event. it will be called with the target object.
+
+```javascript
+var deepExtend = require('deep-extend-stream');
+
+deepExtend(function(target) {
+  target; //=> [0, 1, 2]
+}).end([0, 1, 2]);
+
+deepExtend([0, 1, 2], function(target) {
+  target; //=> [0, 1, 2]
+}).end();
+```
+
+## License
+
+Copyright (c) 2014 [Shinnosuke Watanabe](https://github.com/shinnn)
+
+Licensed under [the MIT License](./LICENSE).
