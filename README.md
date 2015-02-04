@@ -1,10 +1,11 @@
 # deep-extend-stream
 
+[![NPM version](http://img.shields.io/npm/v/deep-extend-stream.svg?style=flat)](https://www.npmjs.com/package/deep-extend-stream)
 [![Build Status](http://img.shields.io/travis/shinnn/deep-extend-stream.svg?style=flat)](https://travis-ci.org/shinnn/deep-extend-stream)
 [![Build status](https://ci.appveyor.com/api/projects/status/1im5lixtp38ecg97?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/deep-extend-stream)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/deep-extend-stream.svg?style=flat)](https://coveralls.io/r/shinnn/deep-extend-stream)
-[![Dependency Status](https://david-dm.org/shinnn/deep-extend-stream.svg?style=flat)](https://david-dm.org/shinnn/deep-extend-stream)
-[![devDependency Status](https://david-dm.org/shinnn/deep-extend-stream/dev-status.svg?style=flat)](https://david-dm.org/shinnn/deep-extend-stream#info=devDependencies)
+[![Dependency Status](https://img.shields.io/david/shinnn/deep-extend-stream.svg?style=flat&label=deps)](https://david-dm.org/shinnn/deep-extend-stream)
+[![devDependency Status](https://img.shields.io/david/dev/shinnn/deep-extend-stream.svg?style=flat&label=devDeps)](https://david-dm.org/shinnn/deep-extend-stream#info=devDependencies)
 
 Recursively extend the object in a stream
 
@@ -26,8 +27,6 @@ deepExtendStream.end();
 
 ## Installation
 
-[![NPM version](http://img.shields.io/npm/v/deep-extend-stream.svg?style=flat)](https://www.npmjs.com/package/deep-extend-stream)
-
 [Use npm.](https://docs.npmjs.com/cli/install)
 
 ```
@@ -44,7 +43,7 @@ var deepExtend = require('deep-extend-stream');
 
 *target*: `Object` or `Array`  
 *callback*: `Function`  
-Return: `Object` ([stream.Transform](http://nodejs.org/api/stream.html#stream_class_stream_writable_1))
+Return: `Object` ([stream.Transform](https://iojs.org/api/stream.html#stream_class_stream_transform_1))
 
 It returns a transform stream that recursively extends the target object with passed objects (what is called "deep extend").
 
@@ -74,7 +73,7 @@ deepExtendStream
 
 #### callback(target)
 
-You can specify a function to be called on `finish` event. it will be called with the target object.
+You can specify a function to be called on [`finish`](https://iojs.org/api/stream.html#stream_events_finish_and_end) event. It will be called with the target object as its first argument.
 
 ```javascript
 var deepExtend = require('deep-extend-stream');
@@ -90,6 +89,6 @@ deepExtend([0, 1, 2], function(target) {
 
 ## License
 
-Copyright (c) 2014 [Shinnosuke Watanabe](https://github.com/shinnn)
+Copyright (c) 2014 - 2015 [Shinnosuke Watanabe](https://github.com/shinnn)
 
 Licensed under [the MIT License](./LICENSE).
