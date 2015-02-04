@@ -13,7 +13,10 @@ module.exports = function deepExtendStream(target, cb) {
     target = {};
   } else {
     if (cb && typeof cb !== 'function') {
-      throw new TypeError('must be a function');
+      throw new TypeError(
+        cb +
+        ' is not a function. The second argument to deep-extend-stream must be a function.'
+      );
     }
     target = target || {};
   }

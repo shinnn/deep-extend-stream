@@ -65,7 +65,7 @@ test('deepExtendStream()', function(t) {
 
   t.throws(
     deepExtend.bind(null, 'string', {}),
-    /TypeError.*must be a function/,
+    /TypeError.* is not a function\..*must be a function\./,
     'should throw a type error when the second argument is not a function.'
   );
 });
