@@ -5,7 +5,7 @@
 'use strict';
 
 var deepExtend = require('deep-extend');
-var through = require('through2');
+var Transform = require('readable-stream/transform');
 
 module.exports = function deepExtendStream(target, cb) {
   if (typeof target === 'function') {
@@ -21,20 +21,21 @@ module.exports = function deepExtendStream(target, cb) {
     target = target || {};
   }
 
-  function deepExtendTransform(data, enc, done) {
-    deepExtend(target, data);
-    done();
-  }
-
-  function deepExtendFlush(done) {
-    this.push(target);
-    if (cb) {
-      cb(target);
+  var stream = new Transform({
+    objectMode: true,
+    transform: function deepExtendTransform(data, enc, done) {
+      deepExtend(target, data);
+      done();
+    },
+    flush: function deepExtendFlush(done) {
+      this.push(target);
+      if (cb) {
+        cb(target);
+      }
+      done();
     }
-    done();
-  }
+  });
 
-  var stream = through.obj(deepExtendTransform, deepExtendFlush);
   stream._target = target;
 
   return stream;

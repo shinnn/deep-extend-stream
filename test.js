@@ -14,7 +14,7 @@ test('deepExtendStream()', function(t) {
     t.deepEqual(
       obj,
       {foo: 0, bar: {a: [1], b: '2'}, baz: ['3']},
-      'should extend the object based on the file name, contents and encoding.'
+      'should extend the object.'
     );
     t.strictEqual(targetObject, obj, 'should directly pass the target object to the callback.');
   });
@@ -23,23 +23,18 @@ test('deepExtendStream()', function(t) {
   stream.end({bar: {b: '2'}});
 
   var targetArray = ['b'];
-  arrayStream([['a', 'b', 'c'], {'1': false}, {'1_': true}, false, null, setTimeout])
+  var stream2 = arrayStream([{1: false}, {'1_': true}, ['a', 'b', 'c']])
   .on('end', function() {
-    t.deepEqual(targetArray, {
-      '0': 'a',
-      '1': false,
-      '2': 'c',
-      '1_': true
-    }, 'should regard the second argument as optional.');
-  })
-  .pipe(deepExtend(targetArray))
-  .pipe(deepExtend({'4': null}, function(obj) {
+    var expected = ['b', false];
+    expected['1_'] = true;
+    t.deepEqual(targetArray, expected, 'should regard the second argument as optional.');
+  });
+  stream2.pipe(deepExtend(targetArray));
+  stream2.pipe(deepExtend({4: null}, function(obj) {
     t.deepEqual(obj, {
-      '0': 'a',
-      '1': false,
-      '2': 'c',
+      1: false,
       '1_': true,
-      '4': null
+      4: null
     }, 'should work as a transform stream.');
   }));
 
