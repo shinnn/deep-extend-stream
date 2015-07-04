@@ -1,24 +1,24 @@
 # deep-extend-stream
 
-[![NPM version](http://img.shields.io/npm/v/deep-extend-stream.svg?style=flat)](https://www.npmjs.com/package/deep-extend-stream)
-[![Build Status](http://img.shields.io/travis/shinnn/deep-extend-stream.svg?style=flat)](https://travis-ci.org/shinnn/deep-extend-stream)
+[![NPM version](http://img.shields.io/npm/v/deep-extend-stream.svg)](https://www.npmjs.com/package/deep-extend-stream)
+[![Build Status](http://img.shields.io/travis/shinnn/deep-extend-stream.svg)](https://travis-ci.org/shinnn/deep-extend-stream)
 [![Build status](https://ci.appveyor.com/api/projects/status/1im5lixtp38ecg97?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/deep-extend-stream)
-[![Coverage Status](https://img.shields.io/coveralls/shinnn/deep-extend-stream.svg?style=flat)](https://coveralls.io/r/shinnn/deep-extend-stream)
-[![Dependency Status](https://img.shields.io/david/shinnn/deep-extend-stream.svg?style=flat&label=deps)](https://david-dm.org/shinnn/deep-extend-stream)
-[![devDependency Status](https://img.shields.io/david/dev/shinnn/deep-extend-stream.svg?style=flat&label=devDeps)](https://david-dm.org/shinnn/deep-extend-stream#info=devDependencies)
+[![Coverage Status](https://img.shields.io/coveralls/shinnn/deep-extend-stream.svg)](https://coveralls.io/r/shinnn/deep-extend-stream)
+[![Dependency Status](https://img.shields.io/david/shinnn/deep-extend-stream.svg?label=deps)](https://david-dm.org/shinnn/deep-extend-stream)
+[![devDependency Status](https://img.shields.io/david/dev/shinnn/deep-extend-stream.svg?label=devDeps)](https://david-dm.org/shinnn/deep-extend-stream#info=devDependencies)
 
 Recursively extend the object in a stream
 
 ```javascript
-var deepExtend = require('deep-extend-stream');
+const deepExtend = require('deep-extend-stream');
 
-var target = {foo: {bar: 123}};
-var deepExtendStream = deepExtend(target);
+let target = {foo: {bar: 123}};
+let deepExtendStream = deepExtend(target);
 
 deepExtendStream.write({foo: {baz: 'Hello'}});
 deepExtendStream.write({qux: 'World'});
 
-deepExtendStream.on('finish', function() {
+deepExtendStream.on('finish', () => {
   target; //=> {foo: {bar: 123, baz: 'Hello'}, qux: 'World'}
 });
 
@@ -36,7 +36,7 @@ npm install deep-extend-stream
 ## API
 
 ```javascript
-var deepExtend = require('deep-extend-stream');
+const deepExtend = require('deep-extend-stream');
 ```
 
 ### deepExtend([*target*,] [*callback*])
@@ -50,8 +50,8 @@ It returns a transform stream that recursively extends the target object with pa
 Target object is optional (`{}` by default).
 
 ```javascript
-var deepExtend = require('deep-extend-stream');
-var deepExtendStream = deepExtend();
+const deepExtend = require('deep-extend-stream');
+let deepExtendStream = deepExtend();
 
 deepExtendStream
 .on('finish', function() {
@@ -76,13 +76,13 @@ deepExtendStream
 You can specify a function to be called on [`finish`](https://iojs.org/api/stream.html#stream_events_finish_and_end) event. It will be called with the target object as its first argument.
 
 ```javascript
-var deepExtend = require('deep-extend-stream');
+const deepExtend = require('deep-extend-stream');
 
-deepExtend(function(target) {
+deepExtend(target => {
   target; //=> [0, 1, 2]
 }).end([0, 1, 2]);
 
-deepExtend([0, 1, 2], function(target) {
+deepExtend([0, 1, 2], target => {
   target; //=> [0, 1, 2]
 }).end();
 ```
