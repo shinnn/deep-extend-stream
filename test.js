@@ -1,16 +1,16 @@
-'use strict';
+'use strong';
 
-var arrayStream = require('stream-array');
-var deepExtend = require('./');
-var test = require('tape');
+const arrayStream = require('stream-array');
+const deepExtend = require('./');
+const test = require('tape');
 
-test('deepExtendStream()', function(t) {
+test('deepExtendStream()', t => {
   t.plan(9);
 
   t.equal(deepExtend.name, 'deepExtendStream', 'should have a function name.');
 
-  var targetObject = {foo: [0, 0], bar: {a: [1]}, baz: ['3']};
-  var stream = deepExtend(targetObject, function(obj) {
+  const targetObject = {foo: [0, 0], bar: {a: [1]}, baz: ['3']};
+  const stream = deepExtend(targetObject, obj => {
     t.deepEqual(
       obj,
       {foo: 0, bar: {a: [1], b: '2'}, baz: ['3']},
@@ -22,15 +22,15 @@ test('deepExtendStream()', function(t) {
   stream.write({foo: 0});
   stream.end({bar: {b: '2'}});
 
-  var targetArray = ['b'];
-  var stream2 = arrayStream([{1: false}, {'1_': true}, ['a', 'b', 'c']])
-  .on('end', function() {
-    var expected = ['b', false];
+  const targetArray = ['b'];
+  const stream2 = arrayStream([{1: false}, {'1_': true}, ['a', 'b', 'c']])
+  .on('end', () => {
+    const expected = ['b', false];
     expected['1_'] = true;
     t.deepEqual(targetArray, expected, 'should regard the second argument as optional.');
   });
   stream2.pipe(deepExtend(targetArray));
-  stream2.pipe(deepExtend({4: null}, function(obj) {
+  stream2.pipe(deepExtend({4: null}, obj => {
     t.deepEqual(obj, {
       1: false,
       '1_': true,
@@ -38,7 +38,7 @@ test('deepExtendStream()', function(t) {
     }, 'should work as a transform stream.');
   }));
 
-  arrayStream([{a: true}, {a: undefined}, {a: undefined}]).pipe(deepExtend(function(obj) {
+  arrayStream([{a: true}, {a: undefined}, {a: undefined}]).pipe(deepExtend(obj => {
     t.deepEqual(
       obj,
       {a: undefined},
@@ -59,7 +59,7 @@ test('deepExtendStream()', function(t) {
   }).end();
 
   t.throws(
-    deepExtend.bind(null, 'string', {}),
+    () => deepExtend('string', {}),
     /TypeError.* is not a function\..*must be a function\./,
     'should throw a type error when the second argument is not a function.'
   );

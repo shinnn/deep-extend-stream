@@ -12,8 +12,8 @@ Recursively extend the object in a stream
 ```javascript
 const deepExtend = require('deep-extend-stream');
 
-let target = {foo: {bar: 123}};
-let deepExtendStream = deepExtend(target);
+const target = {foo: {bar: 123}};
+const deepExtendStream = deepExtend(target);
 
 deepExtendStream.write({foo: {baz: 'Hello'}});
 deepExtendStream.write({qux: 'World'});
@@ -51,7 +51,7 @@ Target object is optional (`{}` by default).
 
 ```javascript
 const deepExtend = require('deep-extend-stream');
-let deepExtendStream = deepExtend();
+const deepExtendStream = deepExtend();
 
 deepExtendStream
 .on('finish', function() {
