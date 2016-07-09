@@ -59,8 +59,8 @@ test('deepExtendStream()', t => {
   }).end();
 
   t.throws(
-    () => deepExtend('string', {}),
-    /TypeError.* is not a function\..*must be a function\./,
+    () => deepExtend('string', ['not function']),
+    /^TypeError.*\[ 'not function' \] is not a function\. .*must be a function\./,
     'should throw a type error when the second argument is not a function.'
   );
 });
