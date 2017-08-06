@@ -5,7 +5,7 @@
   "repository": "shinnn/deep-extend-stream",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
   "scripts": {
-    "pretest": "eslint --config @shinnn/node --rule 'no-underscore-dangle: 0' index.js test.js",
+    "pretest": "eslint --fix --format=codeframe index.js test.js",
     "test": "node test.js",
     "coverage": "node --strong_mode node_modules/.bin/istanbul cover test.js",
     "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
@@ -28,13 +28,19 @@
     "writable"
   ],
   "dependencies": {
-    "deep-extend": "^0.4.1"
+    "deep-extend": "^0.5.0"
   },
   "devDependencies": {
-    "@shinnn/eslint-config-node": "^2.0.0",
-    "eslint": "^2.9.0",
-    "istanbul": "^0.4.3",
+    "@shinnn/eslint-config-node": "^4.0.2",
+    "eslint": "^4.4.0",
+    "istanbul": "^0.4.5",
     "stream-array": "^1.1.2",
-    "tape": "^4.5.1"
+    "tape": "^4.8.0"
+  },
+  "eslintConfig": {
+    "extends": "@shinnn/node",
+    "rules": {
+      "no-underscore-dangle": "off"
+    }
   }
 }

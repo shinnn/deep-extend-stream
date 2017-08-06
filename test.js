@@ -23,18 +23,18 @@ test('deepExtendStream()', t => {
   stream.end({bar: {b: '2'}});
 
   const targetArray = ['b'];
-  const stream2 = arrayStream([{1: false}, {'1_': true}, ['a', 'b', 'c']])
+  const stream2 = arrayStream([{'1': false}, {'1_': true}, ['a', 'b', 'c']])
   .on('end', () => {
     const expected = ['b', false];
     expected['1_'] = true;
     t.deepEqual(targetArray, expected, 'should regard the second argument as optional.');
   });
   stream2.pipe(deepExtend(targetArray));
-  stream2.pipe(deepExtend({4: null}, obj => {
+  stream2.pipe(deepExtend({'4': null}, obj => {
     t.deepEqual(obj, {
-      1: false,
+      '1': false,
       '1_': true,
-      4: null
+      '4': null
     }, 'should work as a transform stream.');
   }));
 
