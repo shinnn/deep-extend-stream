@@ -1,11 +1,8 @@
 # deep-extend-stream
 
-[![NPM version](http://img.shields.io/npm/v/deep-extend-stream.svg)](https://www.npmjs.com/package/deep-extend-stream)
+[![npm version](http://img.shields.io/npm/v/deep-extend-stream.svg)](https://www.npmjs.com/package/deep-extend-stream)
 [![Build Status](http://img.shields.io/travis/shinnn/deep-extend-stream.svg)](https://travis-ci.org/shinnn/deep-extend-stream)
-[![Build status](https://ci.appveyor.com/api/projects/status/1im5lixtp38ecg97?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/deep-extend-stream)
-[![Coverage Status](https://img.shields.io/coveralls/shinnn/deep-extend-stream.svg)](https://coveralls.io/r/shinnn/deep-extend-stream)
-[![Dependency Status](https://img.shields.io/david/shinnn/deep-extend-stream.svg?label=deps)](https://david-dm.org/shinnn/deep-extend-stream)
-[![devDependency Status](https://img.shields.io/david/dev/shinnn/deep-extend-stream.svg?label=devDeps)](https://david-dm.org/shinnn/deep-extend-stream#info=devDependencies)
+[![Coverage Status](https://img.shields.io/coveralls/shinnn/deep-extend-stream.svg)](https://coveralls.io/github/shinnn/deep-extend-stream)
 
 Recursively extend the object in a stream
 
@@ -89,6 +86,6 @@ deepExtend([0, 1, 2], target => {
 
 ## License
 
-Copyright (c) 2014 - 2016 [Shinnosuke Watanabe](https://github.com/shinnn)
+Copyright (c) 2014 - 2017 [Shinnosuke Watanabe](https://github.com/shinnn)
 
 Licensed under [the MIT License](./LICENSE).
