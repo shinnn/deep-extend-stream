@@ -4,10 +4,10 @@
 */
 'use strict';
 
-const util = require('util');
+const {inspect} = require('util');
 
 const deepExtend = require('deep-extend');
-const Transform = require('stream').Transform;
+const {Transform} = require('stream');
 
 module.exports = function deepExtendStream(target, cb) {
   if (typeof target === 'function') {
@@ -15,10 +15,9 @@ module.exports = function deepExtendStream(target, cb) {
     target = {};
   } else {
     if (cb && typeof cb !== 'function') {
-      throw new TypeError(
-        util.inspect(cb) +
-        ' is not a function. The second argument to deep-extend-stream must be a function.'
-      );
+      throw new TypeError(`${
+        inspect(cb)
+      } is not a function. The second argument to deep-extend-stream must be a function.`);
     }
     target = target || {};
   }
@@ -31,9 +30,11 @@ module.exports = function deepExtendStream(target, cb) {
     },
     flush(done) {
       this.push(target);
+
       if (cb) {
         cb(target);
       }
+
       done();
     }
   });
