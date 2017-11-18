@@ -86,6 +86,4 @@ deepExtend([0, 1, 2], target => {
 
 ## License
 
-Copyright (c) 2014 - 2017 [Shinnosuke Watanabe](https://github.com/shinnn)
-
-Licensed under [the MIT License](./LICENSE).
+[ISC License](./LICENSE) © 2017 Shinnosuke Watanabe

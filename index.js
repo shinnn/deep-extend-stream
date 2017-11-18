@@ -1,7 +1,3 @@
-/*!
- * deep-extend-stream | MIT (c) Shinnosuke Watanabe
- * https://github.com/shinnn/deep-extend-stream
-*/
 'use strict';
 
 const {inspect} = require('util');
