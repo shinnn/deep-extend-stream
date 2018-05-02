@@ -24,7 +24,7 @@ deepExtendStream.end();
 
 ## Installation
 
-[Use npm.](https://docs.npmjs.com/cli/install)
+[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/getting-started/what-is-npm).
 
 ```
 npm install deep-extend-stream
@@ -40,7 +40,7 @@ const deepExtend = require('deep-extend-stream');
 
 *target*: `Object` or `Array`  
 *callback*: `Function`  
-Return: `Object` ([stream.Transform](https://iojs.org/api/stream.html#stream_class_stream_transform_1))
+Return: [`stream.Transform`](https://iojs.org/api/stream.html#stream_class_stream_transform_1)
 
 It returns a transform stream that recursively extends the target object with passed objects (what is called "deep extend").
 
@@ -86,4 +86,4 @@ deepExtend([0, 1, 2], target => {
 
 ## License
 
-[ISC License](./LICENSE) © 2017 Shinnosuke Watanabe
+[ISC License](./LICENSE) © 2017 - 2018 Shinnosuke Watanabe

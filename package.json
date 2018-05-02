@@ -1,44 +1,44 @@
 {
-  "name": "deep-extend-stream",
-  "version": "4.0.0-0",
-  "description": "Transform stream to extend an object recursively",
-  "repository": "shinnn/deep-extend-stream",
-  "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
-  "scripts": {
-    "pretest": "eslint --fix --format=codeframe index.js test.js",
-    "test": "istanbul cover test.js"
-  },
-  "license": "ISC",
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "extend",
-    "deep",
-    "deep-extend",
-    "data",
-    "object",
-    "property",
-    "properties",
-    "stream",
-    "transform",
-    "readable",
-    "writable"
-  ],
-  "dependencies": {
-    "deep-extend": "^0.5.0"
-  },
-  "devDependencies": {
-    "@shinnn/eslint-config-node": "^4.0.2",
-    "eslint": "^4.8.0",
-    "istanbul": "^0.4.5",
-    "stream-array": "^1.1.2",
-    "tape": "^4.8.0"
-  },
-  "eslintConfig": {
-    "extends": "@shinnn/node",
-    "rules": {
-      "no-underscore-dangle": "off"
-    }
-  }
+	"name": "deep-extend-stream",
+	"version": "4.0.0-0",
+	"description": "Transform stream to extend an object recursively",
+	"repository": "shinnn/deep-extend-stream",
+	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+	"scripts": {
+		"pretest": "eslint --fix --format=codeframe index.js test.js",
+		"test": "nyc --reporter=html --reporter=text node test.js"
+	},
+	"license": "ISC",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"extend",
+		"deep",
+		"deep-extend",
+		"data",
+		"object",
+		"property",
+		"properties",
+		"stream",
+		"transform",
+		"readable",
+		"writable"
+	],
+	"dependencies": {
+		"deep-extend": "^0.5.1"
+	},
+	"devDependencies": {
+		"@shinnn/eslint-config-node": "^5.0.0",
+		"eslint": "^4.19.1",
+		"nyc": "^11.7.1",
+		"stream-from-array": "^1.0.0",
+		"tape": "^4.8.0"
+	},
+	"eslintConfig": {
+		"extends": "@shinnn/node",
+		"rules": {
+			"no-underscore-dangle": "off"
+		}
+	}
 }
