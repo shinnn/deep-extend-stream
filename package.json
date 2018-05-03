@@ -1,6 +1,6 @@
 {
 	"name": "deep-extend-stream",
-	"version": "4.0.0-0",
+	"version": "4.0.0-1",
 	"description": "Transform stream to extend an object recursively",
 	"repository": "shinnn/deep-extend-stream",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
